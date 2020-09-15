@@ -1,0 +1,63 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{t1enc}
+\usepackage[magyar]{babel}
+\sloppy
+
+\usepackage{amsmath}
+
+\usepackage{graphicx}
+
+\title{99.~feladvány: családi konvergencia}
+\author{Endrey Márk}
+
+\begin{document}
+	\maketitle
+
+	\section{Grafikon}
+
+	Bár a feladatban erős szabályokat és invariánsokat vehetünk észre, amelyek fölölslegessé teszik a konvergencia végigkövetését, ,,a töröttvvonal kiegyenesíthetőnek'' fog bizonyulni --- de mindennek ellenére azért készítsünk el egy grafikont legalább az első néhány találkozásig!
+
+	A grafikon átlátható felrajzolásához először is mértékegységeket kell választanunk, részben azért, mert a feladat vegyes mértékegységekkel lett megadva, részben pedig azért, mert az ábra mindkét tengelyét erősen át kell skáláznunk, ha szépen akarjuk felkoordinátázni, ezt pedig a legszemléletesebben (bár kissé radikálisan) egyedi mértékegységek meghatározásval érhetjük el:
+
+	\[1 \frac{\text{k\bf m}}{\text{\bf h}} = \frac{1 \text{k\bf m}}{1 \text{\bf h}} = \frac{1000 \text{\bf m}}{3600 \text{\bf s}} = \frac{10 \text{\bf m}}{36 \text{\bf s}} = \frac{1 \text{dk\bf m}}{1 \text{hxtk\bf s}} = 1 \frac{\text{dk\bf m}}{\text{hxtk\bf s}}\]
+
+	\[\boxed{1\text{dk\bf m} := 10\text{\bf m},\hspace{2em}1\text{hxtk\bf s} := 36 \text{\bf s},\hspace{2em}1 \frac{\text{dk\bf m}}{\text{hxtk\bf s}} = 1 \frac{\text{k\bf m}}{\text{\bf h}}}\]
+
+	A távolságot dekaméterben (10 m), az időt hekkai\-triakonta\-másodpercben (36 s) számolva már közelebb jutunk e célhoz: legalább a grafikon kiinduló vonalait csupa egészszám-koordinátájú sarkalatos pontok között húzhatjuk ki. Ráadásul 1 dekaméter per hekkai\-triakonta\-másodperc az éppen 1 kilometer per óra.
+
+	Azonban még mindig csúnya, hogy a családtagok sebességét ábrázoló vonalak meredeksége átláthattatlanul nagy (Apa-Anya 2, Junior 5, Medior 8, Szenior 12). Jó lenne, ha a vonalak meredekségei lankásabban és egyenletesebben oszlanának el a lapos és a meredek között. Pl. rendre 4-szeresen leskálázva lehetne Apa-Anya $\frac12$, Junior $\frac54$, Medior 2 és Szenior 3. Ehhez az amúgy is furcsa hekkai\-triakonta\-másodpercet mértékegységet (1 hxtk{\bf s} = 36 {\bf s}) kötegeljük össze négyesével, megkapva az ennea\-másodperc (= 9s) mértékegységet ($1 \text{hxkt{\bf s}} = 4 \text{en{\bf s}} = 4\cdot 9 \text{{\bf s}}$):
+
+	\[1 \frac{\text{dk\bf m}}{\text{hxtk\bf s}} = \frac{10 \text{\bf m}}{36 \text{\bf s}} = \frac{10 \text{\bf m}}{4\cdot9 \text{\bf s}} = \frac14\cdot\frac{10 \text{\bf m}}{9 \text{\bf s}} = \frac14 \cdot \frac{1\text{dk\bf m}}{1\text{en\bf s}} = \frac14 \cdot \frac{\text{dk\bf m}}{\text{en\bf s}}\]
+
+	\[1\frac{\text{dk\bf m}}{\text{en\bf s}} = 4 \frac{\text{dk\bf m}}{\text{hxtk\bf s}}\]
+
+	\[\boxed{1\text{dk\bf m} := 10\text{\bf m},\hspace{2em}1\text{en\bf s} = 9 \text{\bf s},\hspace{2em}1\frac{\text{dk\bf m}}{\text{en\bf s}} = 4\frac{\text{k\bf m}}{\text{\bf h}}}\]
+
+	Így hát akkor az időt enneamásodpercben, a hosszat dekaméterben mérve immár jó lelkiismerettel elkezdhetjük a grafikon felrajzolását legalább az első néhány találkozásig:
+
+	\includegraphics{graph-1}
+
+	A koordinátázás valóban tűrhetőnek bizonyul, és az is látszik, hogy a találkozó 12 enneamásodperc (3 hekkai\-triakonta\-másodperc, 108 másodperc) alatt jön létre, de ideje rátérni a feladat lényegére: a törvények, invariánsok megtalálására.
+
+	\section{Invariancia}
+
+	Tételezzünk fel egy olyan alternatív jelenetet, hogy a gyerekek nem állnak meg sem egymással, sem szüleikkel való találkozáskor, hanem irányváltoztatás nélkül haladnak tovább, eltávolodva szüleiktől, viszont  szüleik találkozása pillanatában egyszerre fegyelmezetten megállnak. Az egyes gyerekek által megtett út mit sem változik. Ezt akár úgy is elképzelhetjük, hogy mindene egyes gyerek járműve ,,kilométerórával'' van ellátva, amely a megtett utat összegszerűen rögzíti.
+
+	Érdemes észrevenni, hogy a megfigyelt és kihasznált invarianciaelv nagyon hasonló ahhoz, mint a jólismert tükrözéses feladatban (,,A farmer megitatja a szamarát a folyónál, miközben a legrövidebb úton halad két adott pont között''). A fő gondolat ott is a töröttvonal visszavezetése egyenes vonalra, felismerve, hogy a feladat optimalizálandó mértéke szempontjából a tükrözés a töröttvonalat (a keresett optimális esetben) épp egyenesbe viszi. Bár a jelen feladatnál ugyan nincs optmalizálandó mérték, de a töröttvonalhoz itt is egyenest rendelünk, mert a feladat által kért mennyiség szempontjából itt is egyenértékűek.
+
+	A feladat konrét számszerű kérdésének megválaszolásához  a grafikon nagyrész felesleges (a szép egyenletes meredekségekhez kitalált enneamásodperccel együtt), a hekkaitriakontmásodperc viszont most épp nem jön rosszul, és a dekaméter is maradhat a végső számoláshoz. Apa-Anya találkozója 3 hekkaitriakontamásodperc alatt jön létre (108 s), a gyerekek sebessége pedig Junior, Medior, Szenior sorrendben rendre 5, 8, és 12 dekaméter per hekkai\-triakonta\-másodperc (ugyanaz, mint km/h-ban!). Thát Junior, Medior és Szenior rendre $5\cdot3 = 15$, $8\cdot3 = 24$ és $12\cdot3 = 36$ dekaméter utat tesz meg, Apa-Anya pedig (külön-külön persze) $2\cdot3 = 6$ dekamétert. A válaszadatok tehát: Junor 150 m, Medior  240 m, Szenior 360 m utat tesz meg. (Apa meg 60 m, és természetesen Anya is 60 m, ez utóbbi kettő egyfajta gyenge és részleges ellenőrzésre jó).
+
+	\section{Kerülők levágása: csak invariancia és arányosság}
+
+	Az egész a legegyszerűbben még ezeket a számításokat sem igényli. Már a feladat kiinduló adataiból is kitűnik, hogy Junior kétésfélszeres, Medior négyszeres, és Szenor hatszoros ,,szülősebeséggel'' halad, és mivel mozgótevékenségét egyszerre állítja meg a család, így a gyerekek által megtett út rendre a megfelelő arányokban kapható meg az egyes szülők által megtett útból (vagyis a 60 méterből). Junior útösszhossza kétsésfélszer 60 m tehát 150m, Medioré négyszer 60 tehát 240 m, Szenioré pedig hatszor 60 tehát 360 m.
+
+
+	\section{Matematika és fizika --- modell és realizáció}
+
+	A matematikai modell szerint a gyerekek végtelen alkalmommal fordulnak, ,,ütköznek'', természetesen ez a bizonyos végtelen csak a végpontba ,,besűrűsödve'', határértékként áll elő, és az összúthosszak a fentiekben látott jól meghatározott véges mennyiségek.
+
+	A fizikai valóság a dolgot természetesen magukat az ütközési eseményeket is véges keretek közé szabottan realizálja: a dolognak legkésőbb a kvantummechanikia bizonytalanság véges ütközésszámot enged, de ténylegesen a mindennapi gyakorlat még ennél is kisebb előfordulást szab. 
+
+\end{document}
